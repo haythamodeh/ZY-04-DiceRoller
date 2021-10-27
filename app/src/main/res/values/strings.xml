@@ -6,6 +6,10 @@
     <string name="action_three">Three</string>
     <string name="action_stop">Stop</string>
     <string name="dice_one">1</string>
+    <string name="add_one">Add one</string>
+    <string name="subtract_one">Subtract one</string>
+    <string name="roll">Roll</string>
+
     <!-- Dialog title -->
     <string name="pick_roll_length">Roll length?</string>
 
