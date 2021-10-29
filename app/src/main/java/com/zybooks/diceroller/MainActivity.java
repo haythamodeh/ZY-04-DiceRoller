@@ -1,6 +1,9 @@
 package com.zybooks.diceroller;
 
+import static android.view.GestureDetector.*;
+
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -62,52 +65,194 @@ public class MainActivity extends AppCompatActivity
         for (int i = 0; i < mDiceImageViews.length; i++) {
             //registerForContextMenu(mDiceImageViews[i]);
             mDiceImageViews[i].setTag(i);
+
         }
 
-        // Moving finger left or right changes dice number
-        //adding vertical scroll left, right or up, down to change dice values.
-//        mDiceImageViews[0].setOnTouchListener((v, event) -> {
-//            int action = event.getAction();
-//            switch (action) {
-//                case MotionEvent.ACTION_DOWN:
-//                    mInitX = (int) event.getX();
-//                    mInitY = (int) event.getY();
-//                    return true;
-//                case MotionEvent.ACTION_MOVE:
-//                    int x = (int) event.getX();
-//                    int y = (int) event.getY();
-//
-//                    // See if movement is at least 20 pixels
-//                    if (Math.abs(x - mInitX) >= 20) {
-//                        if (x > mInitX) {
-//                            mDice[0].addOne();
-//                        }
-//                        else {
-//                            mDice[0].subtractOne();
-//                        }
-//                        showDice();
-//                        mInitX = x;
-//                    }
-//                    if (Math.abs(y - mInitY) >= 20) {
-//                        if (y > mInitY) {
-//                            mDice[0].addOne();
-//                        }
-//                        else {
-//                            mDice[0].subtractOne();
-//                        }
-//                        showDice();
-//                        mInitY = y;
-//                    }
-//
-//                    return true;
-//            }
-//            return false;
-//        });
+//         Moving finger left or right changes dice number
+//        adding vertical scroll left, right or up, down to change dice values.
+        mDiceImageViews[0].setOnTouchListener((v, event) -> {
+            int action = event.getAction();
+            switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                    mInitX = (int) event.getX();
+                    mInitY = (int) event.getY();
+                    return true;
+                case MotionEvent.ACTION_MOVE:
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
 
+                    // See if movement is at least 20 pixels
+                    if (Math.abs(x - mInitX) >= 20) {
+                        if (x > mInitX) {
+                            mDice[0].addOne();
+                        }
+                        else {
+                            mDice[0].subtractOne();
+                        }
+                        showDice();
+                        mInitX = x;
+                    }
+                    if (Math.abs(y - mInitY) >= 20) {
+                        if (y > mInitY) {
+                            mDice[0].addOne();
+                        }
+                        else {
+                            mDice[0].subtractOne();
+                        }
+                        showDice();
+                        mInitY = y;
+                    }
 
+                    return true;
+            }
+            return false;
+        });
+        mDiceImageViews[1].setOnTouchListener((v, event) -> {
+            int action = event.getAction();
+            switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                    mInitX = (int) event.getX();
+                    mInitY = (int) event.getY();
+                    return true;
+                case MotionEvent.ACTION_MOVE:
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
+
+                    // See if movement is at least 20 pixels
+                    if (Math.abs(x - mInitX) >= 20) {
+                        if (x > mInitX) {
+                            mDice[1].addOne();
+                        }
+                        else {
+                            mDice[1].subtractOne();
+                        }
+                        showDice();
+                        mInitX = x;
+                    }
+                    if (Math.abs(y - mInitY) >= 20) {
+                        if (y > mInitY) {
+                            mDice[1].addOne();
+                        }
+                        else {
+                            mDice[1].subtractOne();
+                        }
+                        showDice();
+                        mInitY = y;
+                    }
+
+                    return true;
+            }
+            return false;
+        });
+        mDiceImageViews[2].setOnTouchListener((v, event) -> {
+            int action = event.getAction();
+            switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                    mInitX = (int) event.getX();
+                    mInitY = (int) event.getY();
+                    return true;
+                case MotionEvent.ACTION_MOVE:
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
+
+                    // See if movement is at least 20 pixels
+                    if (Math.abs(x - mInitX) >= 20) {
+                        if (x > mInitX) {
+                            mDice[2].addOne();
+                        }
+                        else {
+                            mDice[2].subtractOne();
+                        }
+                        showDice();
+                        mInitX = x;
+                    }
+                    if (Math.abs(y - mInitY) >= 20) {
+                        if (y > mInitY) {
+                            mDice[2].addOne();
+                        }
+                        else {
+                            mDice[2].subtractOne();
+                        }
+                        showDice();
+                        mInitY = y;
+                    }
+
+                    return true;
+            }
+            return false;
+        });
 
         mDetector = new GestureDetectorCompat(this, new DiceGestureListener());
 
+
+//        mDiceImageViews[0].setOnClickListener(new DoubleClickListener(){
+//
+//            @Override
+//            public void onSingleClick(View v) {
+//
+//            }
+//
+//            @Override
+//            public void onDoubleClick(View v) {
+//                mDice[0].addOne();
+//                showDice();
+//            }
+//        });
+//        mDiceImageViews[1].setOnClickListener(new DoubleClickListener(){
+//
+//            @Override
+//            public void onSingleClick(View v) {
+//
+//            }
+//
+//            @Override
+//            public void onDoubleClick(View v) {
+//                mDice[1].addOne();
+//                showDice();
+//            }
+//        });
+//        mDiceImageViews[2].setOnClickListener(new DoubleClickListener(){
+//
+//            @Override
+//            public void onSingleClick(View v) {
+//
+//            }
+//
+//            @Override
+//            public void onDoubleClick(View v) {
+//                mDice[2].addOne();
+//                showDice();
+//            }
+//        });
+
+
+//        mDiceImageViews[2].setOnTouchListener((v, event) -> {
+//            mDetector = new GestureDetectorCompat(this, new DiceGestureListener());
+//            return true;
+//        });
+
+
+    }
+    public abstract class DoubleClickListener implements View.OnClickListener {
+
+        private static final long DOUBLE_CLICK_TIME_DELTA = 300;//milliseconds
+
+        long lastClickTime = 0;
+
+        @Override
+        public void onClick(View v) {
+            long clickTime = System.currentTimeMillis();
+            if (clickTime - lastClickTime < DOUBLE_CLICK_TIME_DELTA){
+                onDoubleClick(v);
+                lastClickTime = 0;
+            } else {
+                onSingleClick(v);
+            }
+            lastClickTime = clickTime;
+        }
+
+        public abstract void onSingleClick(View v);
+        public abstract void onDoubleClick(View v);
     }
 
     @Override
@@ -116,7 +261,7 @@ public class MainActivity extends AppCompatActivity
         return super.onTouchEvent(event);
     }
 
-    private class DiceGestureListener extends GestureDetector.SimpleOnGestureListener {
+    private class DiceGestureListener extends SimpleOnGestureListener implements View.OnTouchListener {
 
         @Override
         public boolean onDown(MotionEvent event) {
@@ -136,27 +281,37 @@ public class MainActivity extends AppCompatActivity
         @Override
         public boolean onDoubleTap(MotionEvent e) {
 //            mDice[0].addOne();
-//            showDice();
-            float x = e.getX();
-            float y = e.getY();
-            //dice 1 : x 330 - 740 y 390 - 808
-            if(e.getX() > 330 && e.getX() < 740 && e.getY() > 390 && e.getY() < 808) {
-                mDice[0].addOne();
-                showDice();
-            }
-            //dice 2 : x 332 - 754 y 1039 - 1461
-            if(e.getX() > 330 && e.getX() < 740 && e.getY() > 1039 && e.getY() < 1461) {
-                mDice[1].addOne();
-                showDice();
-            }
-            //dice 3 : x 332 - 754 y 1673 - 2095
-            if(e.getX() > 330 && e.getX() < 740 && e.getY() > 1673 && e.getY() < 2095) {
-                mDice[2].addOne();
-                showDice();
-            }
 
-            Log.d("Double Tap", "Tapped at: (" + x + "," + y + ")");
+//            e.toString();
+//            mDice[].addOne();
+//            showDice();
+//            showDice();
+//            float x = e.getX();
+//            float y = e.getY();
+//            //dice 1 : x 330 - 740 y 390 - 808
+//            if(e.getX() > 330 && e.getX() < 740 && e.getY() > 390 && e.getY() < 808) {
+//                mDice[0].addOne();
+//                showDice();
+//            }
+//            //dice 2 : x 332 - 754 y 1039 - 1461
+//            if(e.getX() > 330 && e.getX() < 740 && e.getY() > 1039 && e.getY() < 1461) {
+//                mDice[1].addOne();
+//                showDice();
+//            }
+//            //dice 3 : x 332 - 754 y 1673 - 2095
+//            if(e.getX() > 330 && e.getX() < 740 && e.getY() > 1673 && e.getY() < 2095) {
+//                mDice[2].addOne();
+//                showDice();
+//            }
+//
+//            Log.d("Double Tap", "Tapped at: (" + x + "," + y + ")");
+            Log.d("Eveneent", e.toString());
             return true;
+        }
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            return false;
         }
     }
 

@@ -21,8 +21,8 @@ public class Dice {
     }
 
     public void setNumber(int number) {
-        if(number > LARGEST_NUM)
-            number = SMALLEST_NUM;
+//        if(number > LARGEST_NUM)
+//            number = SMALLEST_NUM;
         if (number >= SMALLEST_NUM && number <= LARGEST_NUM) {
             mNumber = number;
             switch (number) {
