@@ -65,122 +65,48 @@ public class MainActivity extends AppCompatActivity
         for (int i = 0; i < mDiceImageViews.length; i++) {
             //registerForContextMenu(mDiceImageViews[i]);
             mDiceImageViews[i].setTag(i);
+            //Moving finger left or right changes dice number
+            //adding vertical scroll left, right or up, down to change dice values.
+            int finalI = i;
+            mDiceImageViews[i].setOnTouchListener((v, event) -> {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        mInitX = (int) event.getX();
+                        mInitY = (int) event.getY();
+                        return true;
+                    case MotionEvent.ACTION_MOVE:
+                        int x = (int) event.getX();
+                        int y = (int) event.getY();
 
+                        // See if movement is at least 20 pixels
+                        if (Math.abs(x - mInitX) >= 20) {
+                            if (x > mInitX) {
+                                mDice[finalI].addOne();
+                            }
+                            else {
+                                mDice[finalI].subtractOne();
+                            }
+                            showDice();
+                            mInitX = x;
+                        }
+                        if (Math.abs(y - mInitY) >= 20) {
+                            if (y > mInitY) {
+                                mDice[finalI].addOne();
+                            }
+                            else {
+                                mDice[finalI].subtractOne();
+                            }
+                            showDice();
+                            mInitY = y;
+                        }
+
+                        return true;
+                }
+                return false;
+            });
         }
 
-//         Moving finger left or right changes dice number
-//        adding vertical scroll left, right or up, down to change dice values.
-        mDiceImageViews[0].setOnTouchListener((v, event) -> {
-            int action = event.getAction();
-            switch (action) {
-                case MotionEvent.ACTION_DOWN:
-                    mInitX = (int) event.getX();
-                    mInitY = (int) event.getY();
-                    return true;
-                case MotionEvent.ACTION_MOVE:
-                    int x = (int) event.getX();
-                    int y = (int) event.getY();
-
-                    // See if movement is at least 20 pixels
-                    if (Math.abs(x - mInitX) >= 20) {
-                        if (x > mInitX) {
-                            mDice[0].addOne();
-                        }
-                        else {
-                            mDice[0].subtractOne();
-                        }
-                        showDice();
-                        mInitX = x;
-                    }
-                    if (Math.abs(y - mInitY) >= 20) {
-                        if (y > mInitY) {
-                            mDice[0].addOne();
-                        }
-                        else {
-                            mDice[0].subtractOne();
-                        }
-                        showDice();
-                        mInitY = y;
-                    }
-
-                    return true;
-            }
-            return false;
-        });
-        mDiceImageViews[1].setOnTouchListener((v, event) -> {
-            int action = event.getAction();
-            switch (action) {
-                case MotionEvent.ACTION_DOWN:
-                    mInitX = (int) event.getX();
-                    mInitY = (int) event.getY();
-                    return true;
-                case MotionEvent.ACTION_MOVE:
-                    int x = (int) event.getX();
-                    int y = (int) event.getY();
-
-                    // See if movement is at least 20 pixels
-                    if (Math.abs(x - mInitX) >= 20) {
-                        if (x > mInitX) {
-                            mDice[1].addOne();
-                        }
-                        else {
-                            mDice[1].subtractOne();
-                        }
-                        showDice();
-                        mInitX = x;
-                    }
-                    if (Math.abs(y - mInitY) >= 20) {
-                        if (y > mInitY) {
-                            mDice[1].addOne();
-                        }
-                        else {
-                            mDice[1].subtractOne();
-                        }
-                        showDice();
-                        mInitY = y;
-                    }
-
-                    return true;
-            }
-            return false;
-        });
-        mDiceImageViews[2].setOnTouchListener((v, event) -> {
-            int action = event.getAction();
-            switch (action) {
-                case MotionEvent.ACTION_DOWN:
-                    mInitX = (int) event.getX();
-                    mInitY = (int) event.getY();
-                    return true;
-                case MotionEvent.ACTION_MOVE:
-                    int x = (int) event.getX();
-                    int y = (int) event.getY();
-
-                    // See if movement is at least 20 pixels
-                    if (Math.abs(x - mInitX) >= 20) {
-                        if (x > mInitX) {
-                            mDice[2].addOne();
-                        }
-                        else {
-                            mDice[2].subtractOne();
-                        }
-                        showDice();
-                        mInitX = x;
-                    }
-                    if (Math.abs(y - mInitY) >= 20) {
-                        if (y > mInitY) {
-                            mDice[2].addOne();
-                        }
-                        else {
-                            mDice[2].subtractOne();
-                        }
-                        showDice();
-                        mInitY = y;
-                    }
-
-                    return true;
-            }
-            return false;
-        });
 
         mDetector = new GestureDetectorCompat(this, new DiceGestureListener());
 
